@@ -11,10 +11,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+            presets: ["@babel/react"]
+          }
         }
       },
       {
@@ -22,6 +26,9 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       }
     ]
+  },
+  resolve: {
+    extensions: [".js", ".jsx"]
   },
   output: {
     filename: "main.js",
